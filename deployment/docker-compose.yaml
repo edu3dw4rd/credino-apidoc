@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+  credino-apidoc-service:
+    container_name: credino-apidoc-service
+    image: slatedocs/slate
+    volumes:
+      - ./../source:/srv/slate/source
+    ports:
+     - 24567:4567
+    command: serve
