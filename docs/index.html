@@ -293,11 +293,35 @@ You must replace <code>123123123123</code> with your personal API key.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"start_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21 Apr 2022"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"next_payment_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21 Jul 2022"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"credit_amount_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"membership_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIP 3 Month"</span><span class="w">
+    </span><span class="nl">"user_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"full_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1986-04-01"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"credit_score"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Good"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collectibility"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collectibility_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum blablabla"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-03"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"risk_factors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"recent_changes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address_changes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email_changes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"phone_changes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"high_risk_activities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"recent_account_openings"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"unusual_locations"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"multiple_ssn_uses"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"alerts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"reported_fraud"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"data_breaches"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>

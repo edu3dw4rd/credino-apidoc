@@ -13,11 +13,35 @@ curl -X GET "https://api.credino.io/credit-scores/{userID}"
 {
   "success": true,
   "data": {
-    "id": 1,
-    "start_at": "21 Apr 2022",
-    "next_payment_at": "21 Jul 2022",
-    "credit_amount_due": 1234,
-    "membership_type": "VIP 3 Month"
+    "user_info": {
+      "first_name": "Foo",
+      "last_name": "Bar",
+      "full_name": "Foo Bar",
+      "dob": "1986-04-01"
+    },
+    "credit_score": {
+      "score": 500,
+      "rating": "Good",
+      "collectibility": 1,
+      "collectibility_description": "Lorem ipsum blablabla",
+      "score_date": "2024-06-03"
+    },
+    "risk_factors": {
+      "recent_changes": {
+        "address_changes": 1,
+        "email_changes": 0,
+        "phone_changes": 2
+      },
+      "high_risk_activities": {
+        "recent_account_openings": 1,
+        "unusual_locations": true,
+        "multiple_ssn_uses": false
+      },
+      "alerts": {
+        "reported_fraud": false,
+        "data_breaches": true
+      }
+    }
   }
 }
 ```
