@@ -6,7 +6,7 @@ services:
     image: slatedocs/slate
     volumes:
       - ./../source:/srv/slate/source
-      - ./../build:/srv/slate/build
+      - ./../docs:/srv/slate/build
     ports:
      - 24567:4567
     command: serve
