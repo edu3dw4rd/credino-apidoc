@@ -5,10 +5,10 @@
 
 1. Clone this repo
 
-2. And run this command for download dependency : 
+2. Makesure you have docker installed in your system and run this command: 
 
-    `bundle install && bundle update --bundler && bundle exec middleman server --watcher-force-polling`
+    `make deploy_dev`
 
-3. To build the doc, run the following command:
+3. To build the doc, run the following command (**NOTE**: makesure `credino-apidoc-service` container already running):
 
-    `bundle exec middleman build --clean`
+    `make build_doc`
