@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 includes:
   - credit_scores
   - disputes
+  - users
   - errors
 
 search: true

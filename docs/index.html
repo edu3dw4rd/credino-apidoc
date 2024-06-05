@@ -255,6 +255,23 @@
               </ul>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-new-user" class="toc-h2 toc-link" data-title="Register New User">Register New User</a>
+                  </li>
+                  <li>
+                    <a href="#request-otp" class="toc-h2 toc-link" data-title="Request OTP">Request OTP</a>
+                  </li>
+                  <li>
+                    <a href="#new-user-verification" class="toc-h2 toc-link" data-title="New User Verification">New User Verification</a>
+                  </li>
+                  <li>
+                    <a href="#upload-user-id" class="toc-h2 toc-link" data-title="Upload User ID">Upload User ID</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -471,6 +488,245 @@ You must replace <code>123123123123</code> with your personal API key.
 <tr>
 <td>order_by</td>
 <td>to sort the result, e.g. id ASC</td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='register-new-user'>Register New User</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/register"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62812123123113"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62812123123113"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email already exist"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed to register user"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint will register a new user to Credino system.</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/register&quot;</code></p>
+<h3 id='request-body-parameters'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>Credino user&#39;s name</td>
+</tr>
+<tr>
+<td>email <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>Credino user&#39;s email</td>
+</tr>
+<tr>
+<td>phone <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>Credino user&#39;s phone number</td>
+</tr>
+</tbody></table>
+<h2 id='request-otp'>Request OTP</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/otp"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"otp_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"already requested otp 5 times. please try again later"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed to request otp"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint will send OTP to user through email or SMS.</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/otp&quot;</code></p>
+<h3 id='request-body-parameters-2'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id <strong><em>(Required)</em></strong></td>
+<td>uint</td>
+<td>user_id</td>
+</tr>
+<tr>
+<td>otp_type <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>otp type (one of: phone, email)</td>
+</tr>
+</tbody></table>
+<h2 id='new-user-verification'>New User Verification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/verification"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"otp"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wrong otp"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint will verify user using OTP.</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/verification&quot;</code></p>
+<h3 id='request-body-parameters-3'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id <strong><em>(Required)</em></strong></td>
+<td>uint</td>
+<td>user_id</td>
+</tr>
+<tr>
+<td>otp <strong><em>(Required)</em></strong></td>
+<td>uint</td>
+<td>otp verification</td>
+</tr>
+</tbody></table>
+<h2 id='upload-user-id'>Upload User ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/upload-id"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KTP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id_no"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456123456123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id_image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjIAAAEqCAYAAAAPoboyAAAKqmlDQ1BJQ0MgUHJv="</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id file exceeds 2MB"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed to upload id"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint will upload user&#39;s identity information.</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/upload-id&quot;</code></p>
+<h3 id='request-body-parameters-4'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id <strong><em>(Required)</em></strong></td>
+<td>uint</td>
+<td>user_id</td>
+</tr>
+<tr>
+<td>id_type <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>identity type (one of: KTP, passport, SIM)</td>
+</tr>
+<tr>
+<td>id_no <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>identity number</td>
+</tr>
+<tr>
+<td>id_image <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>identity base64 image</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
