@@ -86,7 +86,7 @@ curl -X GET "https://api.credino.io/credit-scores/recommendation/{userID}"
       "rating": "Good",
       "score_description": "Your credit score is considered good. This means you have a history of managing your credit well. You are likely to receive favorable interest rates on loans and credit cards.",
       "collectibility": 1,
-      "collectibility_description": "Lorem ipsum blablabla",
+      "collectibility_description": "Your collectibility score is good",
       "score_date": "2024-06-03"
     },
     "recommendations": [
