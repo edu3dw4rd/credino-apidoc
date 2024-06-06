@@ -81,21 +81,44 @@ curl -X GET "https://api.credino.io/credit-scores/recommendation/{userID}"
 {
   "success": true,
   "data": {
-    "items": [
+    "credit_score": {
+      "score": 500,
+      "rating": "Good",
+      "score_description": "Your credit score is considered good. This means you have a history of managing your credit well. You are likely to receive favorable interest rates on loans and credit cards.",
+      "collectibility": 1,
+      "collectibility_description": "Lorem ipsum blablabla",
+      "score_date": "2024-06-03"
+    },
+    "recommendations": [
       {
-        "trx_description": "test recommendation",
-        "total": "Rp 100.000",
-        "created_at": "17 July 2022"
+        "title": "Current Limit Balance",
+        "description": "use your credit card with max usage of 30% each",
+        "cc_data": [
+          {
+            "financial_institution_id": 1,
+            "financial_institution_name": "BCA",
+            "current_limit": 10000000,
+            "usage_recommendation_percentage": 0.3,
+            "usage_recommendation_total": 3000000
+          },
+          {
+            "financial_institution_id": 2,
+            "financial_institution_name": "BRI",
+            "current_limit": 5000000,
+            "usage_recommendation_percentage": 0.3,
+            "usage_recommendation_total": 1500000
+          }
+        ]
+      },
+      {
+        "title": "Pay bills with your CC",
+        "description": "Pay your monthly bills (electricity(PLN), water(PDAM), Internet) with your CC"
+      },
+      {
+        "title": "Add subscriptions",
+        "description": "Add subscription such as Netflix, Disney+, PSN, XBOX Game Pass and pay with your CC"
       }
-    ],
-    "pagination": {
-      "has_next": true,
-      "has_previous": false,
-      "page": 1,
-      "per_page": 5,
-      "total_items": 11,
-      "total_pages": 3
-    }
+    ]
   }
 }
 ```
@@ -109,15 +132,8 @@ This endpoint will return financial recommendation based on the Credino's User c
 `GET https://api.credino.io/credit-scores/recommendation/{userID}`
 
 
-### Query Parameters
-
-Parameter | Description
---------- | -----------
-page | requested page.
-limit | requested limit to set the number of data to return.
-
 ### Path Parameters
 
 Parameter | Data Type | Description
 --------- | ----------- | -----------
-userID ***(Required)*** | uint64 | WP user ID
+userID ***(Required)*** | uint64 | Credino's user ID

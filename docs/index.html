@@ -207,7 +207,7 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-e7f11b56.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-bb485edd.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-c427a123.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-c5541673.js"></script>
   </head>
@@ -267,7 +267,13 @@
                     <a href="#new-user-verification" class="toc-h2 toc-link" data-title="New User Verification">New User Verification</a>
                   </li>
                   <li>
-                    <a href="#upload-user-id" class="toc-h2 toc-link" data-title="Upload User ID">Upload User ID</a>
+                    <a href="#upload-user-identification" class="toc-h2 toc-link" data-title="Upload User Identification">Upload User Identification</a>
+                  </li>
+                  <li>
+                    <a href="#set-user-pin" class="toc-h2 toc-link" data-title="Set User PIN">Set User PIN</a>
+                  </li>
+                  <li>
+                    <a href="#user-login" class="toc-h2 toc-link" data-title="User Login">User Login</a>
                   </li>
               </ul>
           </li>
@@ -378,21 +384,44 @@ You must replace <code>123123123123</code> with your personal API key.
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"credit_score"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Good"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your credit score is considered good. This means you have a history of managing your credit well. You are likely to receive favorable interest rates on loans and credit cards."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collectibility"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collectibility_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lorem ipsum blablabla"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-06-03"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"recommendations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"trx_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test recommendation"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rp 100.000"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17 July 2022"</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Current Limit Balance"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"use your credit card with max usage of 30% each"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"cc_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"financial_institution_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"financial_institution_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BCA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"current_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usage_recommendation_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usage_recommendation_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3000000</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"financial_institution_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"financial_institution_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BRI"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"current_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usage_recommendation_percentage"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"usage_recommendation_total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500000</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pay bills with your CC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pay your monthly bills (electricity(PLN), water(PDAM), Internet) with your CC"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add subscriptions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add subscription such as Netflix, Disney+, PSN, XBOX Game Pass and pay with your CC"</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nl">"pagination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"has_next"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"has_previous"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"total_items"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"total_pages"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -401,22 +430,6 @@ You must replace <code>123123123123</code> with your personal API key.
 <aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://api.credino.io/credit-scores/recommendation/{userID}</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>requested page.</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>requested limit to set the number of data to return.</td>
-</tr>
-</tbody></table>
 <h3 id='path-parameters-2'>Path Parameters</h3>
 <table><thead>
 <tr>
@@ -428,7 +441,7 @@ You must replace <code>123123123123</code> with your personal API key.
 <tr>
 <td>userID <strong><em>(Required)</em></strong></td>
 <td>uint64</td>
-<td>WP user ID</td>
+<td>Credino&#39;s user ID</td>
 </tr>
 </tbody></table>
 <h1 id='disputes'>Disputes</h1><h2 id='create-dispute'>Create Dispute</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/credit-scores/disputes/{userID}"</span>
@@ -497,7 +510,7 @@ You must replace <code>123123123123</code> with your personal API key.
 <p>Sample Request Payload:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+62812123123113"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -664,7 +677,7 @@ You must replace <code>123123123123</code> with your personal API key.
 <td>otp verification</td>
 </tr>
 </tbody></table>
-<h2 id='upload-user-id'>Upload User ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/upload-id"</span>
+<h2 id='upload-user-identification'>Upload User Identification</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/upload-id"</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
 </code></pre></div>
 <blockquote>
@@ -695,7 +708,7 @@ You must replace <code>123123123123</code> with your personal API key.
   </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed to upload id"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint will upload user&#39;s identity information.</p>
+<p>This endpoint will upload user&#39;s identification information.</p>
 
 <aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
 <h3 id='http-request-4'>HTTP Request</h3>
@@ -727,6 +740,131 @@ You must replace <code>123123123123</code> with your personal API key.
 <td>id_image <strong><em>(Required)</em></strong></td>
 <td>string</td>
 <td>identity base64 image</td>
+</tr>
+</tbody></table>
+<h2 id='set-user-pin'>Set User PIN</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/pin"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pin"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pin_confirmation"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pin and pin confirmation are different"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failed to set pin"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint will set user&#39;s pin.</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/pin&quot;</code></p>
+<h3 id='request-body-parameters-5'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>user_id <strong><em>(Required)</em></strong></td>
+<td>uint</td>
+<td>user_id</td>
+</tr>
+<tr>
+<td>pin <strong><em>(Required)</em></strong></td>
+<td>int</td>
+<td>user&#39;s pin</td>
+</tr>
+<tr>
+<td>pin_confirmation <strong><em>(Required)</em></strong></td>
+<td>int</td>
+<td>user&#39;s pin confirmation</td>
+</tr>
+</tbody></table>
+<h2 id='user-login'>User Login</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://api.credino.io/users/auth"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer 123123123123"</span>
+</code></pre></div>
+<blockquote>
+<p>Sample Request Payload w/ Email:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"login_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pin"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample Request Payload w/ Phone Number:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"login_identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281212313123"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"pin"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON successful response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo Bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@mail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+6281212313123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Sample JSON response with errors:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wrong phone/email or pin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"auth failed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint is for authenticating user with given email/phone and pin</p>
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>POST &quot;https://api.credino.io/users/auth&quot;</code></p>
+<h3 id='request-body-parameters-6'>Request Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>login_identifier <strong><em>(Required)</em></strong></td>
+<td>string</td>
+<td>user&#39;s phone/email</td>
+</tr>
+<tr>
+<td>pin <strong><em>(Required)</em></strong></td>
+<td>int</td>
+<td>user&#39;s pin</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>

@@ -11,7 +11,7 @@ curl -X POST "https://api.credino.io/users/register"
 
 ```json
 {
-    "name": "Foo Bar",
+  "name": "Foo Bar",
 	"email": "test@mail.com",
 	"phone": "+62812123123113"
 }
@@ -166,7 +166,7 @@ Parameter | Data Type | Description
 user_id ***(Required)*** | uint | user_id
 otp ***(Required)*** | uint | otp verification
 
-## Upload User ID
+## Upload User Identification
 
 ```shell
 curl -X POST "https://api.credino.io/users/upload-id"
@@ -204,7 +204,7 @@ curl -X POST "https://api.credino.io/users/upload-id"
 }
 ```
 
-This endpoint will upload user's identity information.
+This endpoint will upload user's identification information.
 
 <aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
 
@@ -220,3 +220,121 @@ user_id ***(Required)*** | uint | user_id
 id_type ***(Required)*** | string | identity type (one of: KTP, passport, SIM)
 id_no ***(Required)*** | string | identity number
 id_image ***(Required)*** | string | identity base64 image
+
+## Set User PIN
+
+```shell
+curl -X POST "https://api.credino.io/users/pin"
+  -H "Authorization: Bearer 123123123123"
+```
+
+> Sample Request Payload:
+
+```json
+{
+    "user_id": 1,
+    "pin": 123456,
+    "pin_confirmation": 123456
+}
+```
+
+> Sample JSON successful response:
+
+```json
+{
+  "success": true,
+  "message": "success",
+  "data": null
+}
+```
+
+> Sample JSON response with errors:
+
+```json
+{
+  "success": false,
+  "message": "pin and pin confirmation are different",
+  "error": "failed to set pin"
+}
+```
+
+This endpoint will set user's pin.
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+
+### HTTP Request
+
+`POST "https://api.credino.io/users/pin"`
+
+### Request Body Parameters
+
+Parameter | Data Type | Description
+--------- | ----------- | -----------
+user_id ***(Required)*** | uint | user_id
+pin ***(Required)*** | int | user's pin
+pin_confirmation ***(Required)*** | int | user's pin confirmation
+
+## User Login
+
+```shell
+curl -X POST "https://api.credino.io/users/auth"
+  -H "Authorization: Bearer 123123123123"
+```
+
+> Sample Request Payload w/ Email:
+
+```json
+{
+    "login_identifier": "test@mail.com",
+    "pin": 123456
+}
+```
+
+> Sample Request Payload w/ Phone Number:
+
+```json
+{
+    "login_identifier": "+6281212313123",
+    "pin": 123456
+}
+```
+
+> Sample JSON successful response:
+
+```json
+{
+  "success": true,
+  "message": "success",
+  "data": {
+    "id": 1,
+    "name": "Foo Bar",
+    "email": "test@mail.com",
+    "phone": "+6281212313123"
+  }
+}
+```
+
+> Sample JSON response with errors:
+
+```json
+{
+  "success": false,
+  "message": "wrong phone/email or pin",
+  "error": "auth failed"
+}
+```
+
+This endpoint is for authenticating user with given email/phone and pin
+
+<aside class="notice">This endpoint can only be accessed using <code><strong>Bearer Authorization Header</strong></code>.</aside>
+
+### HTTP Request
+
+`POST "https://api.credino.io/users/auth"`
+
+### Request Body Parameters
+
+Parameter | Data Type | Description
+--------- | ----------- | -----------
+login_identifier ***(Required)*** | string | user's phone/email
+pin ***(Required)*** | int | user's pin
