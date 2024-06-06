@@ -12,6 +12,7 @@ curl -X GET "https://api.credino.io/credit-scores/{userID}"
 ```json
 {
   "success": true,
+  "message": "success",
   "data": {
     "user_info": {
       "first_name": "Foo",
@@ -80,6 +81,7 @@ curl -X GET "https://api.credino.io/credit-scores/recommendation/{userID}"
 ```json
 {
   "success": true,
+  "message": "success",
   "data": {
     "credit_score": {
       "score": 500,
